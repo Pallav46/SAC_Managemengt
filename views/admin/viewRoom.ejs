@@ -85,11 +85,12 @@
       <thead>
         <tr>
           <th>Room Name</th>
+          <th>Student Name</th>
           <th>Start Date</th>
           <th>Start Time</th>
           <th>End Time</th>
           <th>Status</th>
-          <% if (rooms.some(room => room.status === 'pending')) { %>
+          <% if (rooms.some(room => (room.status === 'pending'))) { %>
           <th>Action</th>
           <% } %>
         </tr>
@@ -97,6 +98,7 @@
       <tbody>
         <% rooms.forEach(function(room) { %>
         <tr>
+          <td><%= room.r_name %></td>
           <td><%= room.name %></td>
           <td><%= formatDate(room.start_time) %></td>
           <td><%= formatTime(room.start_time) %></td>

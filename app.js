@@ -7,6 +7,7 @@ const path = require("path");
 const moment = require("moment");
 const { parse } = require("date-fns");
 
+
 const {
   getAllStudents,
   getStudentById,
@@ -37,6 +38,10 @@ const {
 } = require("./query/room_allot");
 
 const { insertBadmintonCourtAllotment } = require("./query/court");
+const { createDatabaseAndTables } = require("./models/create");
+
+// Call the function to create the database and tables
+
 
 const app = express();
 
@@ -58,6 +63,8 @@ app.use(
     }
   })
 );
+
+createDatabaseAndTables();
 
 // Authentication middleware
 function requireAuth(req, res, next) {

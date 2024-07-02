@@ -17,9 +17,6 @@ connection.connect((err) => {
     return;
   }
   console.log("Connected to MySQL as id " + connection.threadId);
-
-  // Create database and tables
-  createDatabaseAndTables();
 });
 
 // Function to create database and tables
@@ -85,7 +82,6 @@ function createDatabaseAndTables() {
       FOREIGN KEY (r_id) REFERENCES rooms(r_id) ON DELETE CASCADE
     )
   `;
-
   executeQuery(
     createRoomAllotmentTableQuery,
     "Room allotment table created successfully",
@@ -152,3 +148,7 @@ function executeQuery(query, successMessage, errorMessage) {
     console.log(successMessage);
   });
 }
+
+module.exports = {
+  createDatabaseAndTables,
+};
